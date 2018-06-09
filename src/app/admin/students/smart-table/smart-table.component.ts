@@ -38,12 +38,12 @@ export class SmartTableComponent {
         title: 'First Name',
         type: 'string',
       },
-      last_name: {
-        title: 'Last Name',
+      last_name : {
+        title : 'Last Name',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      username : {
+        title : 'Username',
         type: 'string',
       },
       email: {
@@ -60,15 +60,20 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  private dta = [];
+  private dta = [
+  ];
 
   constructor(private service: DataService) {
-    let d = [];
     const data = this.service.getStudents()
     .subscribe(data => {
-      this.dta.push(data);
-    });
-    this.source.load(this.dta);
+      this.dta = data;
+    },
+    err => {
+      console.log(err)
+    },
+    ()=> {
+      this.source.load(this.dta);
+    })
   }
 
   onDeleteConfirm(event): void {

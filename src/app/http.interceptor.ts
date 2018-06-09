@@ -19,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${t.access}`
       }
     });
+    console.log('+++++++++++++++++++++LOG++++++++++++++++++++++')
 
     return next.handle(req);
   }

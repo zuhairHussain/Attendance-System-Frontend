@@ -1,0 +1,35 @@
+<div class="row">
+        <div class="col-md-6">
+            <nb-card>
+              <nb-card-header>Add Students</nb-card-header>
+              <nb-card-body>
+                <form>
+                  <div class="form-group">
+                    <label>First Name</label>
+                      <input type="text" class="form-control" (input)="student.first_name = $event.target.value;"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                      <input type="text" class="form-control" (input)="student.last_name = $event.target.value;"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Username</label>
+                      <input type="text" class="form-control" (input)="student.username = $event.target.value;"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                      <input type="text" class="form-control" (input)="student.email = $event.target.value;"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Class</label>
+                      <select class="form-control" (change)="selectItem($event.target.value)">
+                        <option *ngFor="let class of classes" value="{{ class.id }}">{{ class.name }}</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="btn btn-danger" (click)="addStudent()">Submit</button>
+                  <div class="">{{response}}</div>
+                </form>
+              </nb-card-body>
+            </nb-card>
+          </div>
+    </div>

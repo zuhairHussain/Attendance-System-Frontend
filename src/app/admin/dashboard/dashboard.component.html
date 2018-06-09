@@ -1,5 +1,17 @@
 <div class="row">
     <div class="col-md-6">
+        <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"></webcam>
+        <br/>
+        <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+        <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+        <div class="snapshot" *ngIf="webcamImage">
+          <h2>Nice one!</h2>
+          <div *ngFor="let image of multipleImages">
+              <img [src]="image"/>
+          </div>
+          
+        </div>
+        
         <nb-card>
           <nb-card-header>Attendance</nb-card-header>
           <nb-card-body>

@@ -9,19 +9,33 @@ export class DataService {
   
   constructor(private http: HttpService,private GlobalService : GlobalService) {}
 
-    getStudents() {
+    getStudents():Observable<Students[]> {
         return this.http
             .get( GlobalService.serverApi +'students/?format=json')
-            .map(data => {
-                console.log(data)
-                return data;
-            })
+            .map(res => res as Students[] || []);
+    }
+
+    addStudents(data){
+        return this.http
+            .post( GlobalService.serverApi +'students/', data)
+            .map(res => res);
+    }
+
+    getClasses():Observable<Classes[]> {
+        return this.http
+            .get( GlobalService.serverApi +'classes/?format=json')
+            .map(res => res as Classes[] || []);
     }
 
     login(data) {
         return this.http
             .post( GlobalService.serverApi +'token/?format=json', data)
-            .map(data => {
+            .map(data => {id : string,
+                first_name : string,
+                last_name : string,
+                username : string,
+                email : string,
+                student_class : string
                 return data;
             });
     }
@@ -34,3 +48,16 @@ export class DataService {
             });
     }
 }
+
+interface Students {
+    id : string,
+    first_name : string,
+    last_name : string,
+    username : string,
+    email : string,
+    student_class : string
+  }
+  interface Classes {
+    id : string,
+    name : string,
+  }

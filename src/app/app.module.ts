@@ -12,7 +12,7 @@ import { CoreModule } from './@core/core.module';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptor } from './http.interceptor';
-
+import {WebcamModule} from 'ngx-webcam';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    WebcamModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
