@@ -21,6 +21,11 @@ export class DataService {
             .map(res => res);
     }
 
+    addPhoto(data){
+        return this.http
+            .post( GlobalService.server +'upload/', data)
+            .map(res => res);
+    }
     getClasses():Observable<Classes[]> {
         return this.http
             .get( GlobalService.serverApi +'classes/?format=json')
@@ -30,12 +35,7 @@ export class DataService {
     login(data) {
         return this.http
             .post( GlobalService.serverApi +'token/?format=json', data)
-            .map(data => {id : string,
-                first_name : string,
-                last_name : string,
-                username : string,
-                email : string,
-                student_class : string
+            .map(data => {
                 return data;
             });
     }
@@ -47,6 +47,7 @@ export class DataService {
                 return data;
             });
     }
+    
 }
 
 interface Students {

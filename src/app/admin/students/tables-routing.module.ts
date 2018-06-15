@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TablesComponent } from './tables.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { AddStudentsComponent } from './add/add-student.component';
+import { TrainStudentsComponent } from './train/train-student.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
   {
     path : 'add',
     component: AddStudentsComponent,
+  },
+  {
+    path : 'train',
+    component: TrainStudentsComponent,
   }],
 }];
 
@@ -27,5 +32,6 @@ export class TablesRoutingModule { }
 export const routedComponents = [
   TablesComponent,
   SmartTableComponent,
-  AddStudentsComponent
+  AddStudentsComponent,
+  TrainStudentsComponent
 ];

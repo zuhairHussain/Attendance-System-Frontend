@@ -1,0 +1,10 @@
+.snapshot{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  img {width: 31.7%;
+    margin-right: 10px;
+    margin-bottom: 10px;}
+  img:nth-child(3n+3) {margin-right: 0;}    
+}
