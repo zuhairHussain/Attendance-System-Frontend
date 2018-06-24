@@ -21,9 +21,20 @@ export class DataService {
             .map(res => res);
     }
 
+    attendance(data){
+        return this.http
+            .post( GlobalService.serverApi +'recognize/', data)
+            .map(res => JSON.stringify(res) );
+    }
+
+    train(data){
+        return this.http
+            .get2( GlobalService.serverApi +'train/', data)
+            .map(res => JSON.stringify(res) );
+    }
     addPhoto(data){
         return this.http
-            .post( GlobalService.server +'upload/', data)
+            .upload( GlobalService.server +'upload/', data)
             .map(res => res);
     }
     getClasses():Observable<Classes[]> {
@@ -61,4 +72,8 @@ interface Students {
   interface Classes {
     id : string,
     name : string,
+  }
+
+  interface Photo {
+    photo : string,
   }

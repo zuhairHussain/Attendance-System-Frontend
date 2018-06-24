@@ -1,44 +1,30 @@
 <div class="row">
-    <div class="col-md-6">
-        <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"></webcam>
-        <br/>
-        <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-        <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
-        <div class="snapshot" *ngIf="webcamImage">
-          <h2>Nice one!</h2>
-          <div *ngFor="let image of multipleImages">
-              <img [src]="image"/>
-          </div>
-          
-        </div>
-        
+      <div class="col-md-6">
         <nb-card>
           <nb-card-header>Attendance</nb-card-header>
           <nb-card-body>
             <form>
               <div class="form-group">
                 <label>Class</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" (change)="selectItem($event.target.value)">
+                    <option *ngFor="let class of classes" value="{{ class.id }}">{{ class.name }}</option>
                   </select>
               </div>
-              <div class="form-group">
-                <label>Section</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-              </div>
-              <button type="submit" class="btn btn-danger">Submit</button>
+              <button type="submit" class="btn btn-danger" (click)="submit()">Submit</button>
+              <div *ngIf="response">{{ response }}</div>
             </form>
           </nb-card-body>
         </nb-card>
+      </div>
+      <div class="col-md-6">
+        <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"></webcam>
+        <br/>
+        <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+        <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+        <div class="snapshot" *ngIf="webcamImage">
+          <div *ngIf="multipleImages">
+              <img [src]="multipleImages"/>
+          </div>
+        </div>
       </div>
 </div>

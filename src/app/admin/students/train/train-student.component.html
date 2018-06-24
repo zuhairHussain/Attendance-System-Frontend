@@ -10,26 +10,27 @@
                         <option *ngFor="let student of students" value="{{ student.id }}">{{ student.first_name }} {{ student.last_name }}</option>
                       </select>
                   </div>
+                  <input (change)="upload()" type="file" [multiple]="multiple" #fileInput>
 
 
-                  <div class="snapshot" *ngIf="webcamImage">
+                  <!-- <div class="snapshot" *ngIf="webcamImage">
                       <img *ngFor="let image of multipleImages" [src]="image"/>
-                  </div>
+                  </div> -->
 
 
-                  <button type="submit" class="btn btn-danger" (click)="addStudent()">Submit</button>
+                  <button type="submit" class="btn btn-danger" (click)="train()">Submit</button>
                   <div class="">{{response}}</div>
                 </form>
               </nb-card-body>
             </nb-card>
           </div>
 
-          <div class="col-lg-6">
+          <!-- <div class="col-lg-6">
             <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"></webcam>
             <br/>
             <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
             <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
-          </div>
+          </div> -->
 
-          <input (change)="upload()" type="file" [multiple]="multiple" #fileInput>
+
     </div>
